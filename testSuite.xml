@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="MyTestSuite">
+    <listeners>
+       <listener class-name="testBrain.Listeners"/>
+    </listeners>
+    <test name="chromeTest">
+        <classes>
+            <class name="scripts.MathOperation"/>
+        </classes>
+    </test>
+
+</suite>
