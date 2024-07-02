@@ -61,18 +61,18 @@ public class CalculatorScreen {
         operators.put('/',"divide");
         operators.put('(',"left parenthesis");
         operators.put(')',"right parenthesis");
-        CommonUtility.click(btnAgree);
+        CommonUtility.click(btnAgree,"Agree Button");
 
-        CommonUtility.click(btnSwitch);
+        CommonUtility.click(btnSwitch,"Switch Button");
 
         for(int i=0;i<mathExpression.length();i++){
             if(Character.isDigit(mathExpression.charAt(i))){
-                CommonUtility.click(number(mathExpression.charAt(i)+""));
+                CommonUtility.click(number(mathExpression.charAt(i)+""),"Button "+mathExpression.charAt(i));
             }else{
-                CommonUtility.click(operator(operators.get(mathExpression.charAt(i))));
+                CommonUtility.click(operator(operators.get(mathExpression.charAt(i))),operators.get(mathExpression.charAt(i))+" button");
             }
         }
-        CommonUtility.click(btnEqual);
+        CommonUtility.click(btnEqual,"Equal Button");
         wait.until(ExpectedConditions.visibilityOf(txtResult));
         String result=txtResult.getText().split(" ")[1];
         Assert.assertEquals(result,String.valueOf(expectedResult),"The result displayed on calculator screen after the Math operation is incorrect");

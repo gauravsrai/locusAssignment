@@ -5,6 +5,8 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.AndroidServerFlag;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.BufferedReader;
@@ -15,6 +17,7 @@ public class MobileTest {
 
     private static AppiumDriverLocalService service;
     private static String appiumServerPath = System.getProperty("user.dir")+"/node_modules/appium/build/lib/main.js";
+    public static final Logger logger = LogManager.getLogger(MobileTest.class);
 
     public static URL startTheAppiumService() {
 
@@ -27,6 +30,7 @@ public class MobileTest {
 
         service = AppiumDriverLocalService.buildService(builder);
         service.start();
+        logger.info("Appium server started");
         return service.getUrl();
     }
 
@@ -36,6 +40,7 @@ public class MobileTest {
 
 
     public static DesiredCapabilities setUpDesiredCapabilities() {
+        logger.info("Setting up the desired capabilities");
         String appPath=System.getProperty("user.dir") + BaseTest.properties.getProperty("appApkPath");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("autoGrantPermissions", true);

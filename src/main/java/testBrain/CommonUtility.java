@@ -40,8 +40,8 @@ public class CommonUtility {
         actions=new Actions(driver);
     }
 
-    public static void click(WebElement ele){
-        logger.info("Click on element");
+    public static void click(WebElement ele,String elementName){
+        logger.info("Click on element "+elementName);
         wait.until(ExpectedConditions.visibilityOf(ele));
         ele.click();
     }
